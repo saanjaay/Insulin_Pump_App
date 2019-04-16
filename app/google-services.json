@@ -1,0 +1,35 @@
+{
+  "project_info": {
+    "project_number": "329711444183",
+    "firebase_url": "https://spero-a0ff0.firebaseio.com",
+    "project_id": "spero-a0ff0",
+    "storage_bucket": "spero-a0ff0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:329711444183:android:e43acc66c781e5bc",
+        "android_client_info": {
+          "package_name": "com.example.insulinpump"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDJNyCbpwO0bJapT2FmyNSYNKfnpZ5rchw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "329711444183-37166uuqf2olon5r6mbcacrk2md5c9t8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
