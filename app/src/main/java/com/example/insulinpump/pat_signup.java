@@ -29,6 +29,8 @@ public class pat_signup extends AppCompatActivity {
         editText3=(EditText)findViewById(R.id.editText2);
         editText4=(EditText)findViewById(R.id.editText4);
         button =(Button) findViewById(R.id.button4);
+        progressBar=(ProgressBar) findViewById(R.id.progressBar);
+        progressBar.setVisibility(View.GONE);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -66,7 +68,7 @@ public class pat_signup extends AppCompatActivity {
         if (!TextUtils.isEmpty(name) && !TextUtils.isEmpty(email) && !TextUtils.isEmpty(password) && !TextUtils.isEmpty(doctorcode)) {
             progressBar.setVisibility(View.VISIBLE);
             Pat judge = new Pat(name, email, password, doctorcode);
-            FirebaseDatabase.getInstance().getReference("judges")
+            FirebaseDatabase.getInstance().getReference("Patients")
                     .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
                     .setValue(judge).addOnCompleteListener(new OnCompleteListener<Void>() {
                 public void onComplete(@NonNull Task<Void> task) {
@@ -78,7 +80,6 @@ public class pat_signup extends AppCompatActivity {
                         editText3.setText("");
                         editText4.setText("");
                         Intent i = new Intent(pat_signup.this, patient_login.class);
-
                         startActivity(i);
                     } else {
                         Toast.makeText(pat_signup.this, "Registration Failed,Try Again", Toast.LENGTH_SHORT).show();

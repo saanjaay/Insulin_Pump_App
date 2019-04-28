@@ -9,7 +9,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".pat_signup"></activity>
+        <activity android:name=".Settings"></activity>
+        <activity android:name=".graphs" />
+        <activity android:name=".diet" />
+        <activity android:name=".profile" />
+        <activity android:name=".preset" />
+        <activity android:name=".patient_medication"
+            android:theme="@style/ApTheme"/>
+        <activity android:name=".pat_signup" />
         <activity android:name=".patient_login" />
         <activity android:name=".patient_details" />
         <activity android:name=".MainActivity">
