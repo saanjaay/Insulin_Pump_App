@@ -48,7 +48,7 @@ public class patient_medication extends AppCompatActivity  implements Navigation
                 startActivity(h);
                 break;
             case R.id.profile:
-                Intent j = new Intent(this, preset.class);
+                Intent j = new Intent(this, profile.class);
                 startActivity(j);
                 break;
             case R.id.preset:
