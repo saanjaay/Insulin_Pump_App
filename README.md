@@ -18,3 +18,8 @@ In this repo I have uploading the application that is used by the patients and t
 The Doctor / Patient will choose their selection within this Activity.
 
 ![](images/DocPat.JPG)
+
+The doctors can login into the next activity using by logining into this activity.
+Incase if the Doctor doesnt an account he can signup.
+Every details are stored in the firebase cloud.
+![](images/doclogin.jpg)
