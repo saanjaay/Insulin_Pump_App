@@ -14,12 +14,14 @@ import android.widget.Toast;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 public class pat_signup extends AppCompatActivity {
     private EditText editText1,editText2,editText3,editText4;
     private ProgressBar progressBar;
     private Button button;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,6 +31,7 @@ public class pat_signup extends AppCompatActivity {
         editText3=(EditText)findViewById(R.id.editText2);
         editText4=(EditText)findViewById(R.id.editText4);
         button =(Button) findViewById(R.id.button4);
+
         progressBar=(ProgressBar) findViewById(R.id.progressBar);
         progressBar.setVisibility(View.GONE);
         button.setOnClickListener(new View.OnClickListener() {
@@ -44,6 +47,9 @@ public class pat_signup extends AppCompatActivity {
         final String email = editText2.getText().toString().trim();
         final String password = editText3.getText().toString().trim();
         final String doctorcode = editText4.getText().toString().trim();
+
+
+
         if (name.isEmpty()) {
             Toast.makeText(this, "Please enter name", Toast.LENGTH_LONG).show();
 
@@ -64,16 +70,61 @@ public class pat_signup extends AppCompatActivity {
 
             return;
         }
+        if (!TextUtils.isEmpty(name) && !TextUtils.isEmpty(email) && !TextUtils.isEmpty(password) && !TextUtils.isEmpty(doctorcode)) {
+            progressBar.setVisibility(View.VISIBLE);
+            Name nam = new Name(name);
+
+            FirebaseDatabase.getInstance().getReference("Patientsname")
+                    .push()
+                    .setValue(nam).addOnCompleteListener(new OnCompleteListener<Void>() {
+                public void onComplete(@NonNull Task<Void> task) {
+                    if (task.isSuccessful()) {
+
+
+
+                    } else {
+
+
+                    }
+                }
+            });
+
+
+        }
+        if (!TextUtils.isEmpty(name) && !TextUtils.isEmpty(email) && !TextUtils.isEmpty(password) && !TextUtils.isEmpty(doctorcode)) {
+            progressBar.setVisibility(View.VISIBLE);
+            String tdd="";
+            String basal ="";
+            String bolus = "";
+            Name nam=new Name(name);
+            Value val = new Value(tdd,basal,bolus);
+
+            FirebaseDatabase.getInstance().getReference(nam.name)
+                    .push()
+                    .setValue(val).addOnCompleteListener(new OnCompleteListener<Void>() {
+                public void onComplete(@NonNull Task<Void> task) {
+                    if (task.isSuccessful()) {
+
+                    } else {
+
+
+                    }
+                }
+            });
+
+
+        }
 
         if (!TextUtils.isEmpty(name) && !TextUtils.isEmpty(email) && !TextUtils.isEmpty(password) && !TextUtils.isEmpty(doctorcode)) {
             progressBar.setVisibility(View.VISIBLE);
-            Pat judge = new Pat(name, email, password, doctorcode);
+            User judge = new User(name, email, password, doctorcode,"","","","");
+
             FirebaseDatabase.getInstance().getReference("Patients")
-                    .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
+                    .push()
                     .setValue(judge).addOnCompleteListener(new OnCompleteListener<Void>() {
                 public void onComplete(@NonNull Task<Void> task) {
-                    progressBar.setVisibility(View.GONE);
                     if (task.isSuccessful()) {
+                        progressBar.setVisibility(View.GONE);
                         Toast.makeText(pat_signup.this, "Registration Successful", Toast.LENGTH_SHORT).show();
                         editText1.setText("");
                         editText2.setText("");
@@ -81,13 +132,17 @@ public class pat_signup extends AppCompatActivity {
                         editText4.setText("");
                         Intent i = new Intent(pat_signup.this, patient_login.class);
                         startActivity(i);
+
                     } else {
-                        Toast.makeText(pat_signup.this, "Registration Failed,Try Again", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(pat_signup.this, "Registration Failed,Try again", Toast.LENGTH_SHORT).show();
+
                     }
                 }
             });
 
+
         }
+
 
 
     }}

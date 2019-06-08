@@ -73,7 +73,7 @@ public class Doc extends AppCompatActivity {
 
                     for (DataSnapshot user : dataSnapshot.getChildren()) {
 
-                        User usersBean = user.getValue(User.class);
+                        data usersBean = user.getValue(data.class);
 
                         if (usersBean.password.equals(passw) ){
                             Intent intent=new Intent(Doc.this,patient_list.class);

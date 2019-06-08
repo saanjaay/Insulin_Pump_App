@@ -1,6 +1,7 @@
 package com.example.insulinpump;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -22,6 +23,7 @@ public class patient_login extends AppCompatActivity {
     DatabaseReference users;
     private TextView tv;
     private Button button;
+    SharedPreferences sharedpreferences;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,6 +58,8 @@ public class patient_login extends AppCompatActivity {
     private void login() {
         final String username=user.getText().toString();
         final String passw=password.getText().toString();
+
+
         Query query = users.orderByChild("name").equalTo(username);
         if (username.isEmpty()) {
             Toast.makeText(this, "Please enter name", Toast.LENGTH_LONG).show();
@@ -76,17 +80,30 @@ public class patient_login extends AppCompatActivity {
 
                     for (DataSnapshot user : dataSnapshot.getChildren()) {
 
-                        User usersBean = user.getValue(User.class);
+                        User val = user.getValue(User.class);
 
-                        if (usersBean.password.equals(passw) ){
+                        if (val.password.equals(passw) ){
                             Intent intent=new Intent(patient_login.this,patient_medication.class);
+
+
+                            intent.putExtra("name",username);
+                            /*intent.putExtra("tba",val.tba);
+                            intent.putExtra("rba",val.rba);
+                            intent.putExtra("iba",val.iba);
+                            intent.putExtra("tbo",val.tbo);
+                            intent.putExtra("rbo",val.rbo);
+                            intent.putExtra("ibo",val.ibo);*/
                             startActivity(intent);
                             Toast.makeText(patient_login.this, "Login Successful", Toast.LENGTH_LONG).show();
-                        } else {
+
+
+                        }
+                        else {
                             Toast.makeText(patient_login.this, "Incorrect Password", Toast.LENGTH_LONG).show();
                         }
                     }
-                } else {
+                }
+                else {
                     Toast.makeText(patient_login.this, "UserName not found", Toast.LENGTH_LONG).show();
                 }
             }

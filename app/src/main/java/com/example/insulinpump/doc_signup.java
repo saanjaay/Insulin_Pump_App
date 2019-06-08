@@ -116,7 +116,7 @@ public class doc_signup extends AppCompatActivity
                 else
                 {
                     progressBar.setVisibility(View.VISIBLE);
-                    User user = new User(name, emailid, pass);
+                    data user = new data(name, emailid, pass);
                     doctors.child(String.valueOf(maxid + 1)).setValue(user);
                     Toast.makeText(doc_signup.this, "Registered Successful", Toast.LENGTH_LONG).show();
                     Intent i = new Intent(doc_signup.this, Doc.class);

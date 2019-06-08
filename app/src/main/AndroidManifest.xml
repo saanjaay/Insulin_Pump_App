@@ -34,6 +34,10 @@
         <activity android:name=".patient_list" />
         <activity android:name=".doc_signup" />
         <activity android:name=".Doc" />
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
     </application>
 
 </manifest>

@@ -2,4 +2,11 @@
     <string name="app_name">Insulinpump</string>
     <string name="open">Open</string>
     <string name="close">Close</string>
+    <string-array name="foods">
+        <item>Plain idly</item>
+        <item>Dosai</item>
+        <item>Bread</item>
+        <item>Poori</item>
+        <item>Chappathi</item>
+    </string-array>
 </resources>

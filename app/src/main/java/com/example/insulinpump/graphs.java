@@ -19,7 +19,7 @@ public class graphs extends AppCompatActivity  implements NavigationView.OnNavig
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.patient_medication);
+        setContentView(R.layout.activity_graphs);
 
         navigationView = (NavigationView) findViewById(R.id.nav);
         navigationView.setNavigationItemSelectedListener(this);
