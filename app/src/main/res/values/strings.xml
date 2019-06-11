@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Insulinpump</string>
+    <string name="app_name">Smart Flow</string>
     <string name="open">Open</string>
     <string name="close">Close</string>
     <string-array name="foods">

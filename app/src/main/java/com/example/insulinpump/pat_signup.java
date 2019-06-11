@@ -93,11 +93,9 @@ public class pat_signup extends AppCompatActivity {
         }
         if (!TextUtils.isEmpty(name) && !TextUtils.isEmpty(email) && !TextUtils.isEmpty(password) && !TextUtils.isEmpty(doctorcode)) {
             progressBar.setVisibility(View.VISIBLE);
-            String tdd="";
-            String basal ="";
-            String bolus = "";
+            String data="";
             Name nam=new Name(name);
-            Value val = new Value(tdd,basal,bolus);
+            Value val = new Value(data);
 
             FirebaseDatabase.getInstance().getReference(nam.name)
                     .push()

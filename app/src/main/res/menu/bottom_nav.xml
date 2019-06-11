@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+<item
+    android:id = "@+id/nav_medication"
+    android:icon="@drawable/ic_add_black_24dp"
+ android:title="Medication"/>
+    <item
+        android:id = "@+id/nav_pro"
+        android:icon="@drawable/ic_account_circle_black_24dp"
+        android:title="Profile"/>
+    <item
+        android:id = "@+id/nav_Cal"
+        android:icon="@drawable/ic_local_dining_black_24dp"
+        android:title="Calories"/>
+
+</menu>

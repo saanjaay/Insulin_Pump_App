@@ -4,35 +4,27 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#222431"
     tools:context=".Doc">
 
-    <ImageView
-
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:alpha="0.5"
-        android:scaleType="centerCrop"
-        app:srcCompat="@drawable/docs"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="33dp" />
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="196dp"
-        android:layout_height="87dp"
+        android:layout_width="405dp"
+        android:layout_height="145dp"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginBottom="8dp"
+
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.869"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.038"
-        app:srcCompat="@drawable/spero_" />
+        app:layout_constraintVertical_bias="0.17"
+        app:srcCompat="@drawable/stet3" />
 
     <EditText
         android:id="@+id/editText"
@@ -47,6 +39,8 @@
         android:drawableLeft="@drawable/ic_person_black_24dp"
         android:ems="10"
         android:hint=" Name"
+        android:textColor="#75BA9D"
+        android:textColorHint="#727272"
         android:inputType="textPersonName"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/editText2"
@@ -55,47 +49,26 @@
         app:layout_constraintTop_toTopOf="@+id/imageView"
         app:layout_constraintVertical_bias="1.0" />
 
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="199dp"
-        android:layout_height="22dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginBottom="132dp"
-        android:text="... for a better TOMORROW"
-        android:textColor="@color/common_google_signin_btn_text_dark_focused"
-        android:textColorLink="@color/colorPrimary"
-        android:textSize="14sp"
-        app:layout_constraintBottom_toTopOf="@+id/editText"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.882"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView"
-        app:layout_constraintVertical_bias="0.0" />
-
     <EditText
         android:id="@+id/editText2"
         android:layout_width="279dp"
         android:layout_height="71dp"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="312dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
-        android:layout_marginBottom="220dp"
         android:drawableLeft="@drawable/ic_lock_black_24dp"
         android:ems="10"
         android:hint=" Password"
         android:inputType="textPassword"
+        android:textColorHint="#727272"
         android:textStyle="bold"
+        android:textColor="#75BA9D"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/editText3"
@@ -110,31 +83,38 @@
         android:drawableLeft="@drawable/ic_email_black_24dp"
         android:ems="10"
         android:hint=" Email"
+        android:textColorHint="#727272"
         android:inputType="textPersonName"
+        android:textColor="#75BA9D"
         app:layout_constraintBottom_toTopOf="@+id/editText2"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.508"
+        app:layout_constraintHorizontal_bias="0.491"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editText"
         app:layout_constraintVertical_bias="0.526" />
 
     <Button
         android:id="@+id/button4"
-        android:layout_width="102dp"
-        android:layout_height="62dp"
+        android:layout_width="126dp"
+        android:layout_height="42dp"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginBottom="8dp"
+        android:background="#97CDB5"
         android:text="Sign Up"
+        android:textColor="#222431"
+        android:textSize="17sp"
+        android:textStyle="bold"
+        app:fontFamily="@font/assistant_bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.453"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editText2"
-        app:layout_constraintVertical_bias="0.338" />
+        app:layout_constraintVertical_bias="0.259" />
 
     <ProgressBar
         android:id="@+id/progressBar"

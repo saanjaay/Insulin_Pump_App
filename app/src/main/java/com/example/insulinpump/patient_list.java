@@ -1,9 +1,12 @@
 package com.example.insulinpump;
 
 import android.support.annotation.NonNull;
+import android.support.design.widget.BottomNavigationView;
+import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
+import android.text.Html;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -17,7 +20,6 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,9 +34,7 @@ public class patient_list extends AppCompatActivity {
     List<String> valuesbolus= new ArrayList<>();
     List<String> valuestdd= new ArrayList<>();
     String[] namesArr;
-
-
-
+    int i=0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,8 +44,10 @@ public class patient_list extends AppCompatActivity {
         textView = findViewById(R.id.textView7);
         listView = findViewById(R.id.li);
 
-
-        ChildEventListener childEventListener = new ChildEventListener() {
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationView);
+        bottomNavigationView.setOnNavigationItemReselectedListener(navListener);
+        ChildEventListener childEventListener = new ChildEventListener()
+        {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String previousChildName) {
 
@@ -63,8 +65,6 @@ public class patient_list extends AppCompatActivity {
 
             @Override
             public void onChildChanged(DataSnapshot dataSnapshot, String previousChildName) {
-
-
                 // ...
             }
 
@@ -97,13 +97,16 @@ public class patient_list extends AppCompatActivity {
 
 
                 String text=spinner.getSelectedItem().toString();
-                myy=FirebaseDatabase.getInstance().getReference(text);
+                myy=FirebaseDatabase.getInstance().getReference(text).child("medication");
                 ChildEventListener childEventListener = new ChildEventListener() {
                     @Override
                     public void onChildAdded(DataSnapshot dataSnapshot, String previousChildName) {
 
                         Value val = dataSnapshot.getValue(Value.class);
-                        valuesbasal.add("Basal \t" + val.basal +"\n"+ "Bolus \t"+val.bolus +"\n"+"TDD \t"+ val.tdd);
+                        i++;
+                        String[] da=val.data.split("@",4);
+
+                        valuesbasal.add("\n  Shot \t"+ i +"\n\n             " + da[0] + "   -   "+da[1]+" Units \n\n"+ "             Time   :   "+ da[3] + "\n\n" + "             Date   :   " + da[2]+"\n");
 
                         ArrayAdapter<String> mHistory = new ArrayAdapter<String>(patient_list.this, android.R.layout.simple_list_item_1, valuesbasal);
                         listView.setAdapter(mHistory);
@@ -186,4 +189,25 @@ public class patient_list extends AppCompatActivity {
 
 
     }
+    private BottomNavigationView.OnNavigationItemReselectedListener navListener =
+            new BottomNavigationView.OnNavigationItemReselectedListener() {
+                @Override
+                public void onNavigationItemReselected(@NonNull MenuItem menuItem) {
+                    Fragment selectedFragment = null;
+                    switch(menuItem.getItemId())
+                    {
+                        case R.id.nav_medication:
+                            selectedFragment = new MedicationFragment();
+                            break;
+                        case R.id.nav_pro:
+                            selectedFragment = new ProfileFragment();
+                            break;
+                        case R.id.nav_Cal:
+                            selectedFragment = new FoodFragment();
+                            break;
+
+                    }
+                    getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,selectedFragment).commit();
+                }
+            };
 }
