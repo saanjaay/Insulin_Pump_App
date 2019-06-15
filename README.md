@@ -23,7 +23,8 @@ The doctors can login into the next activity.
 Incase if the Doctor doesnt have  an account he can signup.
 Every details are stored in the firebase cloud.
 Each doctor is given a unique code.
-![](images/doclogi.JPG),
+
+![](images/doclogi.JPG)
 
 The patients can login into the next activity.
 Incase if the patient doesnt have an account he can signup.
