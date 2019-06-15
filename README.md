@@ -19,19 +19,20 @@ The Doctor / Patient will choose their selection within this Activity.
 
 ![](images/DocPat.JPG)
 
-The doctors can login into the next activity using by logining into this activity.
-Incase if the Doctor doesnt an account he can signup.
+The doctors can login into the next activity.
+Incase if the Doctor doesnt have  an account he can signup.
 Every details are stored in the firebase cloud.
 Each doctor is given a unique code.
 ![](images/doclogi.JPG),
 
-The patients can login into the next activity using by logining into this activity.
-Incase if the patient doesnt an account he can signup.
+The patients can login into the next activity.
+Incase if the patient doesnt have an account he can signup.
 Every details are stored in the firebase cloud.
 The patient can enter into the doctors connection using the doctor's code and the code will be given by the doctor.
 
 ![](images/patlogi.JPG)
 
 Fire Base Database :
-
+This is the Cloud Database where the data is pushed from the pump.
 ![](images/DB.JPG)
+
