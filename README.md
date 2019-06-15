@@ -1,11 +1,11 @@
 # Smart Insulin Pump
 
 The Smart insulin pump is a Project sponsored by **Spero Electrics**.
-![](images/spero_.png)
+<p align="center">![](images/spero_.png)</p>
 
 The main aim is to provide a solution that is cost effective and to provide least pain to the users.We have also visited Doctors and Patients to validate the problem. The problem is validated only after the Customer Discovery, Challeng Brief and Value Propositon is proven. The whole process is carried out through iTools which is an innovative toolkit of Forge Accelarator.
 
-![](images/itools.JPG)
+<p align="center">![](images/itools.JPG)</p>
 
 Smart Insulin Pump is an attempt to built an MUP(Minimum Usable Prototype) with four members in the team, that proves the concept of a working insulin pump to provides accurate amount of insulin(both basal/bolas) whenevery necessary.
 
