@@ -36,7 +36,7 @@ The patient can enter into the doctors connection using the doctor's code and th
 Fire Base Database :
 This is the Cloud Database where the data is pushed from the pump.
 
-![](images/DB.JPG)
+![](images/DBs.JPG)
 
 
 The patient can view the basal and bolus amount taken by him along with the time is displayed in the app.
