@@ -1,24 +1,26 @@
 package com.example.insulinpump;
 
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
 import android.content.Intent;
+import android.os.Build;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.NotificationCompat;
+import android.support.v4.app.NotificationManagerCompat;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.widget.ArrayAdapter;
-import android.widget.BaseAdapter;
 import android.widget.TextView;
-import android.widget.Toast;
+
 
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 
@@ -32,6 +34,8 @@ public class patient_medication extends AppCompatActivity  implements Navigation
     String username;
     String tdd1,tba1,rba1,iba1,tbo1,rbo1,ibo1;
     private TextView tdd,tba,tbo,battery,timeba,timebo,res;
+    private final String CHANNEL_ID = "personal_notification";
+    private final int NOTIFICATION_ID = 001;
 
 
     @Override
@@ -60,7 +64,6 @@ public class patient_medication extends AppCompatActivity  implements Navigation
         ChildEventListener childEventListener = new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String previousChildName) {
-
                 Value val = dataSnapshot.getValue(Value.class);
                 String  da[] = val.data.split("@",4);
                  tdd.setText(da[2]);
@@ -76,9 +79,6 @@ public class patient_medication extends AppCompatActivity  implements Navigation
                          tbo.setText(bo);
                          timebo.setText(da[3]);
                  }
-
-
-
             }
 
             @Override
@@ -117,7 +117,29 @@ public class patient_medication extends AppCompatActivity  implements Navigation
                 battery.setText(g);
                 String h = post.ress + "%";
                 res.setText(post.ress);
-            }
+                int a = Integer.parseInt(post.bat);
+                int  b = Integer.parseInt(post.ress);
+                if(a <= 20) {
+                    createNotification();
+                    NotificationCompat.Builder builder = new NotificationCompat.Builder(patient_medication.this, CHANNEL_ID);
+                    builder.setSmallIcon(R.drawable.ic_battery_alert_black_24dp);
+                    builder.setContentTitle("Low Battery!");
+                    builder.setContentText("Recharge Your Battery");
+                    builder.setPriority(NotificationCompat.PRIORITY_DEFAULT);
+                    NotificationManagerCompat notificationManagerCompat = NotificationManagerCompat.from(patient_medication.this);
+                    notificationManagerCompat.notify(NOTIFICATION_ID, builder.build());
+                }
+                if(b <= 20) {
+                    createNotification();
+                    NotificationCompat.Builder builder = new NotificationCompat.Builder(patient_medication.this, CHANNEL_ID);
+                    builder.setSmallIcon(R.drawable.ic_hourglass_empty_black_24dp);
+                    builder.setContentTitle("Reservoir at " + b +"%");
+                    builder.setContentText("Refill Soon");
+                    builder.setPriority(NotificationCompat.PRIORITY_DEFAULT);
+                    NotificationManagerCompat notificationManagerCompat = NotificationManagerCompat.from(patient_medication.this);
+                    notificationManagerCompat.notify(NOTIFICATION_ID, builder.build());
+                }
+                }
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
@@ -172,11 +194,24 @@ public class patient_medication extends AppCompatActivity  implements Navigation
                 Intent g = new Intent(this, patient_login.class);
                 startActivity(g);
                 break;
-
-
         }
         drawerLayout.closeDrawer(GravityCompat.START);
         return true;
     }
 
+
+    private void createNotification()
+    {
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O)
+        {
+            CharSequence name = "Personal Notifications";
+            String des = "Inc all per notis";
+            int importance = NotificationManager.IMPORTANCE_DEFAULT;
+            NotificationChannel notificationChannel = new NotificationChannel(CHANNEL_ID,name,importance);
+            notificationChannel.setDescription(des);
+            NotificationManager notificationManager = (NotificationManager)getSystemService(NOTIFICATION_SERVICE);
+            notificationManager.createNotificationChannel(notificationChannel);
+
+        }
+    }
 }
